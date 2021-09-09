@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<body>
+  <div class="container">
+    <!-- Add Jumbotron -->
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <!-- Add a button for the scraping script -->
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Mars News Section-->
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+        <div class="media">
+          <div class="media-body">
+            <h2>Latest Mars News</h2>
+            <h4 class="media-heading">{{ mars_info.news_title }}</h4>
+            <p>{{ mars_info.news_p }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Image and Facts table section -->
+    <div class="row" id="mars-featured-image">
+      <div class="col-md-8">
+        <h2>Featured Mars Image</h2>
+
+        <img
+          src="{{ mars_info.featured_image_url }}"
+          class="img-thumbnail"
+          alt="Responsive image"
+        />
+      </div>
+
+      <div class="col-md-4">
+        <div class="row" id="mars-facts">
+          <h3>Mars Facts</h3>
+          {{ mars_info.mars_fact_table }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mars Hemispheres section -->
+    <div class="row" id="mars-hemispheres">
+        <h2 class="text-center">Mars Hemispheres</h2>
+    <!-- This part could not be figured out just put place holders in -->  
+      {% for item in mars_info.items %}
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <img src="{{item.img_url}}">
+          <div class="caption">
+            <h4>{{item.title}}</h4>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
